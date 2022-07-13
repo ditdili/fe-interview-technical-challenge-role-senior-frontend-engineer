@@ -62,3 +62,17 @@ export const policyholdersKeyValueGenerator = (
 
   return result;
 };
+
+export const mockPostData: PolicyHolder = {
+  name: 'Mr Simpson',
+  age: 39,
+  address: {
+    line1: '742 Evergreen Terrace',
+    line2: '2',
+    city: 'Springfield',
+    state: 'NA',
+    postalCode: '55555',
+  },
+  phoneNumber: '1-555-123-4567',
+  isPrimary: true,
+};
