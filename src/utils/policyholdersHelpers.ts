@@ -64,7 +64,7 @@ export const policyholdersKeyValueGenerator = (
 };
 
 export const mockPostData: PolicyHolder = {
-  name: 'Mr Simpson',
+  name: 'Mr. Simpson',
   age: 39,
   address: {
     line1: '742 Evergreen Terrace',

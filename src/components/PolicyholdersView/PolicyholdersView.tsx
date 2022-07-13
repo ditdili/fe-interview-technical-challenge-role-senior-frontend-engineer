@@ -1,5 +1,5 @@
 import { Box, Button } from '@mui/material';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getPolicyholders, postPolicyholder } from '../../utils/apiClient';
 import {
   mockPostData,
@@ -8,6 +8,8 @@ import {
 import InfoTable from '../InfoTable';
 
 const PolicyholdersView = () => {
+  const queryClient = useQueryClient();
+
   const { isLoading, isError, error, data } = useQuery(
     'policyholders',
     getPolicyholders
@@ -15,7 +17,7 @@ const PolicyholdersView = () => {
 
   const addPolicyHolderMutation = useMutation(postPolicyholder, {
     onSuccess: (data) => {
-      console.log(data);
+      queryClient.setQueryData('policyholders', data);
     },
   });
 
@@ -32,7 +34,13 @@ const PolicyholdersView = () => {
 
   return (
     <Box sx={{ textAlign: 'center' }}>
-      <InfoTable header="Policy Holder" rows={policyHoldersKeyValues[0]} />
+      {policyHoldersKeyValues.map((policyHolder, index) => {
+        return (
+          <Box key={index} sx={{ mt: 2 }}>
+            <InfoTable header="Policy Holder" rows={policyHolder} />
+          </Box>
+        );
+      })}
 
       <Button
         sx={{ my: 2 }}
