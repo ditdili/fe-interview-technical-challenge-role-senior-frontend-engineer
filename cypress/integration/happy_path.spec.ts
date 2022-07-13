@@ -13,5 +13,21 @@ describe('happy path', () => {
      * - Assert that a network request is made
      * - Assert that data from the network is displayed
      */
+
+    cy.intercept({
+      method: 'GET',
+      url: 'https://fe-interview-technical-challenge-api-git-main-sure.vercel.app/api/policyholders',
+    }).as('getPolicyholders');
+
+    cy.get('[data-testid="policyholders_link"]').click();
+
+    cy.wait('@getPolicyholders').then((xhr) => {
+      expect(xhr.request.method).to.eq('GET');
+    });
+
+    cy.getTestEl('table_body_0').contains('Mrs. Holder').should('be.visible');
+    cy.getTestEl('table_body_0')
+      .contains('123 Lane Ave 3H, Santa Monica, CA 90405')
+      .should('be.visible');
   });
 });
