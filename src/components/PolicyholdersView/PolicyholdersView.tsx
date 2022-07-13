@@ -38,7 +38,7 @@ const PolicyholdersView = () => {
     <Box sx={{ textAlign: 'center' }}>
       {policyHoldersKeyValues.map((policyHolder, index) => {
         return (
-          <Box key={index} sx={{ mt: 2 }}>
+          <Box key={index} sx={{ mt: 2 }} data-testid={`table_body_${index}`}>
             <InfoTable header="Policy Holder" rows={policyHolder} />
           </Box>
         );
