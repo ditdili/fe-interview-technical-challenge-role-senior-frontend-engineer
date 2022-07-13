@@ -1,9 +1,11 @@
 import { Box, Button } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getPolicyholders, postPolicyholder } from '../../utils/apiClient';
 import {
   mockPostData,
   policyholdersKeyValueGenerator,
+  remainingWork,
 } from '../../utils/policyholdersHelpers';
 import InfoTable from '../InfoTable';
 
@@ -51,6 +53,9 @@ const PolicyholdersView = () => {
       >
         Add a policyholder
       </Button>
+      <Box sx={{ textAlign: 'left' }}>
+        <ReactMarkdown children={remainingWork} />
+      </Box>
     </Box>
   );
 };

@@ -76,3 +76,12 @@ export const mockPostData: PolicyHolder = {
   phoneNumber: '1-555-123-4567',
   isPrimary: true,
 };
+
+export const remainingWork = `
+**Additional work before production:**
+* Global state management (ex. Redux).
+* Authentication and security for API calls.
+* Ability to add and edit a policyholder through a form with validation.
+* Improved table view.
+* Unit tests across all components.
+`;
